@@ -17,6 +17,38 @@ public class Zlomek {
        return jmenovatel;
    }
 
+   public Zlomek krat(Zlomek druhy){
+       return new Zlomek(citatel * druhy.citatel, jmenovatel * druhy.jmenovatel);
+   }
+
+   public Zlomek deleno(Zlomek druhy){
+       return new Zlomek(citatel * druhy.jmenovatel, jmenovatel * druhy.citatel);
+   }
+   public Zlomek plus(Zlomek druhy){
+        return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+   }
+
+   public Zlomek minus(Zlomek druhy){
+       return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+   }
+
+   public Zlomek zkratit(){
+       int a = Math.abs(citatel);
+       int b = Math.abs(jmenovatel);
+       if(a<b){
+           int temp = a;
+           a=b;
+           b=temp;
+       }
+       int zb = 0;
+       do{
+           zb = a%b;
+           a=b;
+           b=zb;
+       } while (zb!=0);
+       return new Zlomek(citatel/a, jmenovatel/a);
+   }
+
     @Override //anotace
     public String toString() {
         return String.format("%d / %d", citatel, jmenovatel);

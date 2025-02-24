@@ -10,11 +10,25 @@ public class ZlomkyApp {
 
         Zlomek c =a.krat(b);
         System.out.println("a * b = " + c.zkratit());
-        c = a.deleno(b);
-        System.out.println("a / b = " + c.zkratit());
-        c = a.plus(b);
-        System.out.println("a + b = " + c);
-        c = a.minus(b);
-        System.out.println("a - b = " + c);
+        System.out.println("a / b = " + a.deleno(b).zkratit());
+        System.out.println("a + b = " + a.plus(b).zkratit());
+        System.out.println("a - b = " + a.minus(b).zkratit());
+
+        Zlomek [] poleZlomku = new Zlomek[4];
+        poleZlomku[0] = a;
+        poleZlomku[1] = b;
+        poleZlomku[2] = c;
+        poleZlomku[3] = a.deleno(b);
+
+        System.out.println("Suma pole zlomke =  " + sumaZlomku(poleZlomku));
+    }
+
+    public static Zlomek sumaZlomku(Zlomek [] pole){
+        Zlomek soucet = new Zlomek(0, 1);
+        for (Zlomek z : pole) {
+            soucet = soucet.plus(z);
+        }
+
+        return soucet.zkratit();
     }
 }

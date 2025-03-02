@@ -22,14 +22,54 @@ public class Zlomek extends Number{
    }
 
    public Zlomek deleno(Zlomek druhy){
-       return new Zlomek(citatel * druhy.jmenovatel, jmenovatel * druhy.citatel);
+       if(druhy.citatel == 0 || jmenovatel == 0){
+           throw new Error("Ve jmenovateli nemůže vyjít nula");
+       }
+       else{
+           if (citatel * druhy.jmenovatel == 0) {
+               return new Zlomek(citatel * druhy.jmenovatel, jmenovatel * druhy.citatel);
+           }
+           else{
+               return new Zlomek(citatel * druhy.jmenovatel, jmenovatel * druhy.citatel).zkratit();
+           }
+       }
    }
    public Zlomek plus(Zlomek druhy){
-        return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+       if (jmenovatel == druhy.jmenovatel) {
+           if(citatel + druhy.citatel ==0){
+               return new Zlomek (citatel + druhy.citatel, jmenovatel);
+           }
+           else{
+               return new Zlomek (citatel + druhy.citatel, jmenovatel).zkratit();
+           }
+       }
+       else{
+           if(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel ==0 ){
+               return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+           }
+           else{
+               return new Zlomek(citatel * druhy.jmenovatel + druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel).zkratit();
+           }
+       }
    }
 
    public Zlomek minus(Zlomek druhy){
-       return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+       if (jmenovatel == druhy.jmenovatel) {
+           if(citatel - druhy.citatel ==0){
+               return new Zlomek (citatel - druhy.citatel, jmenovatel);
+           }
+           else{
+               return new Zlomek (citatel - druhy.citatel, jmenovatel).zkratit();
+           }
+       }
+       else{
+           if(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel ==0 ){
+               return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel);
+           }
+           else{
+               return new Zlomek(citatel * druhy.jmenovatel - druhy.citatel * jmenovatel, jmenovatel * druhy.jmenovatel).zkratit();
+           }
+       }
    }
 
    public Zlomek zkratit(){

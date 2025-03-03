@@ -7,6 +7,9 @@ public class Zlomek extends Number{
    public Zlomek(int citatel, int jmenovatel){ /*Konstruktor, this pouzivame, kdyz mame dva stejne nazvy*/
        this.citatel = citatel;
        this.jmenovatel = jmenovatel;
+       if (jmenovatel == 0){
+           throw new Error("Jmenovatel nemůže být nula");
+       }
    }
 
    public int getCitatel(){

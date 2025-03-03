@@ -11,10 +11,28 @@ public class SeznamZlomku {
         zlomky.add(zlomek);
     }
     public void odebratZlomek(int index){
-        zlomky.remove(index);
+        if (pocetZlomku() == 0){
+            throw new RuntimeException("Seznam je prázdný!!");
+        }
+        else {
+            if (index <= 0 || index > zlomky.size()) {
+                throw new IndexOutOfBoundsException("Index je mímo seznam zlomku!!");
+            } else {
+                zlomky.remove(index);
+            }
+        }
     }
     public Zlomek vratZlomek(int index){
-        return zlomky.get(index);
+        if (pocetZlomku() == 0){
+            throw new RuntimeException("Seznam je prázdný!!");
+        }
+        else {
+            if (index <= 0 || index > zlomky.size()) {
+                throw new IndexOutOfBoundsException("Index je mímo seznam zlomku!!");
+            } else {
+                return zlomky.get(index);
+            }
+        }
     }
     public void vypisZlomky(PrintStream out){
         for(Zlomek zlomek : zlomky){
@@ -22,17 +40,27 @@ public class SeznamZlomku {
         }
     }
     public Zlomek spoctiSoucet(){
-       Zlomek soucet = new Zlomek(0, 1);
-       for(Zlomek zlomek : zlomky){
-           soucet = soucet.plus(zlomek);
-       }
-       return soucet.zkratit();
+        if (pocetZlomku() == 0){
+            throw new RuntimeException("Seznam je prázdný!!");
+        }
+        else {
+            Zlomek soucet = new Zlomek(0, 1);
+            for(Zlomek zlomek : zlomky){
+                soucet = soucet.plus(zlomek);
+            }
+            return soucet.zkratit();
+        }
     }
 
     public Zlomek spoctiPrumer(){
-        Zlomek suma = spoctiSoucet();
-        Zlomek pocet = new Zlomek(zlomky.size(), 1);
-        return suma.deleno(pocet).zkratit();
+        if (pocetZlomku() == 0){
+            throw new RuntimeException("Seznam je prázdný!!");
+        }
+        else {
+            Zlomek suma = spoctiSoucet();
+            Zlomek pocet = new Zlomek(zlomky.size(), 1);
+            return suma.deleno(pocet).zkratit();
+        }
     }
 
     public int pocetZlomku(){

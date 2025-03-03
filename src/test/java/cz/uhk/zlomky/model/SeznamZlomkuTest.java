@@ -38,14 +38,14 @@ class SeznamZlomkuTest {
     }
 
     @Test
-    void vypisZlomky() {
-    }
-
-    @Test
     void spoctiSoucet() {
         seznam.pridatZlomek(new Zlomek(3, 5));
+        //jak se chová součet, když je v seznamu jen jeden zlomek
+        assertEquals(3, seznam.spoctiSoucet().getCitatel(), "Citatel");
+        assertEquals(5, seznam.spoctiSoucet().getJmenovatel(), "Jmenovatel");
         seznam.pridatZlomek(new Zlomek(2, 1));
         seznam.pridatZlomek(new Zlomek(5, 3));
+        //součet tří zlomků
         assertEquals(64, seznam.spoctiSoucet().zkratit().getCitatel(), "Citatel" );
         assertEquals(15,seznam.spoctiSoucet().zkratit().getJmenovatel(), "jmenovatel");
     }
@@ -53,8 +53,12 @@ class SeznamZlomkuTest {
     @Test
     void spoctiPrumer() {
         seznam.pridatZlomek(new Zlomek(3, 5));
+        //jak se chová průměr, když je v seznamu jen jeden zlomek
+        assertEquals(3, seznam.spoctiSoucet().getCitatel(), "Citatel");
+        assertEquals(5, seznam.spoctiSoucet().getJmenovatel(), "Jmenovatel");
         seznam.pridatZlomek(new Zlomek(2, 1));
         seznam.pridatZlomek(new Zlomek(5, 3));
+        //průměr tří zlomků
         assertEquals(64, seznam.spoctiPrumer().zkratit().getCitatel(), "Citatel" );
         assertEquals(45, seznam.spoctiPrumer().zkratit().getJmenovatel(), "Jmenovatel");
     }

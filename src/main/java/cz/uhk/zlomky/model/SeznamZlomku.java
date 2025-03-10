@@ -23,15 +23,11 @@ public class SeznamZlomku {
         }
     }
     public Zlomek vratZlomek(int index){
-        if (pocetZlomku() == 0){
-            throw new RuntimeException("Seznam je prázdný!!");
+        if (index <= 0 || index > zlomky.size()) {
+            throw new IndexOutOfBoundsException("Index je mímo seznam zlomku!!");
         }
         else {
-            if (index <= 0 || index > zlomky.size()) {
-                throw new IndexOutOfBoundsException("Index je mímo seznam zlomku!!");
-            } else {
                 return zlomky.get(index);
-            }
         }
     }
     public void vypisZlomky(PrintStream out){
@@ -40,27 +36,18 @@ public class SeznamZlomku {
         }
     }
     public Zlomek spoctiSoucet(){
-        if (pocetZlomku() == 0){
-            throw new RuntimeException("Seznam je prázdný!!");
+        Zlomek soucet = new Zlomek(0, 1);
+        for(Zlomek zlomek : zlomky){
+            soucet = soucet.plus(zlomek);
         }
-        else {
-            Zlomek soucet = new Zlomek(0, 1);
-            for(Zlomek zlomek : zlomky){
-                soucet = soucet.plus(zlomek);
-            }
-            return soucet.zkratit();
-        }
+        return soucet.zkratit();
     }
 
     public Zlomek spoctiPrumer(){
-        if (pocetZlomku() == 0){
-            throw new RuntimeException("Seznam je prázdný!!");
-        }
-        else {
-            Zlomek suma = spoctiSoucet();
-            Zlomek pocet = new Zlomek(zlomky.size(), 1);
-            return suma.deleno(pocet).zkratit();
-        }
+        Zlomek suma = spoctiSoucet();
+        Zlomek pocet = new Zlomek(zlomky.size(), 1);
+        return suma.deleno(pocet).zkratit();
+
     }
 
     public int pocetZlomku(){

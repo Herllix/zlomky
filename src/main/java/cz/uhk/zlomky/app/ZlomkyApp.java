@@ -9,6 +9,7 @@ public class ZlomkyApp {
         //vytvoření instance (objektu) třídy Zlomek
         Zlomek a = new Zlomek(3, 4);
         Zlomek b = new Zlomek (2, 5);
+        System.out.println(a);
 
         Zlomek c =a.krat(b);
         System.out.println("a * b = " + c.zkratit());
